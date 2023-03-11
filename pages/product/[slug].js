@@ -11,15 +11,21 @@ const Post = ({addToCart}) => {
   const { slug } = router.query
   const [pin, setpin] = useState()
   const [service, setservice] = useState()
+
+  const onChangePin=(e)=>{
+    setpin(e.target.value)
+    console.log(1)
+         }
+
   const checkServiceablity =async()=>{
+
     let pins = await fetch('http://localhost:3000/api/pincode')
     let pinJson =await pins.json()
+    console.log(2)
     if(pinJson.includes(parseInt(pin))){setservice(true)}
     else{setservice(false)}
      }
-     const onChangePin=(e)=>{
-setpin(e.target.value)
-     }
+    
 
   return <>
    <section className="text-gray-600 body-font overflow-hidden">
